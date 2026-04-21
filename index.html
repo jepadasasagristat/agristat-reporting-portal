@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgriStat Reporting Portal</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<div class="page-bg"></div>
+
+<main class="main">
+
+  <div class="glass-card">
+
+      <div class="brand">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Department_of_Agriculture_of_the_Philippines.svg/500px-Department_of_Agriculture_of_the_Philippines.svg.png">
+        <div>
+          <h1>AgriStat Reporting Portal</h1>
+          <p class="subtitle">Department of Agriculture • AgriStat NCMO</p>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <h2>Select Reporting System</h2>
+
+      <div class="toggle-wrapper">
+        <div class="toggle-pill" id="pill"></div>
+        <button id="rfoBtn" class="toggle active">Regional Field Offices</button>
+        <button id="ouBtn" class="toggle">Operating Units</button>
+      </div>
+
+      <select id="systemSelect" class="dropdown">
+        <option value="">Select option</option>
+      </select>
+
+      <p class="note">You will be redirected automatically after selection.</p>
+
+  </div>
+
+</main>
+
+<footer>
+Agricultural Statistics (AgriStat) National Coordination and Management Office
+
+© 2026 Department of Agriculture. All Rights Reserved.
+</footer>
+
+<script>
+const rfoData = {
+"CAR – Cordillera Administrative Region": "https://www.appsheet.com/start/9180152b-6f47-4d71-995c-2439765d6a19",
+"Region I – Ilocos Region":"https://www.appsheet.com/start/410d2a7d-db1a-4572-b492-17de251899a8",
+"Region II – Cagayan Valley":"https://www.appsheet.com/start/61405ab5-e83c-4652-b0d2-c5e8bd2bd51a",
+"Region III – Central Luzon":"https://www.appsheet.com/start/330553b7-cf87-47a0-9e49-3946a807e2ad",
+"NCR – National Capital Region": "https://www.appsheet.com/start/add8ddc6-f07e-49ef-b520-35c09314c72c",
+"Region IV-A – CALABARZON":"https://www.appsheet.com/start/be588fa5-89c5-4ef1-9e25-552dcee63dce",
+"MIMAROPA Region (IV-B)": "https://www.appsheet.com/start/f7419adf-de1a-4c82-bda6-3653911c9c5f",
+"Region V - Bicol Region": "https://www.appsheet.com/start/f562d891-1ad6-45e9-a25e-ba1483ade2ce",
+"Region VI – Western Visayas": "https://www.appsheet.com/start/362b9cbe-2669-4d00-848d-a7128063c2d6",
+"NIR – Negros Island Region": "https://www.appsheet.com/start/559080af-cae3-4a86-a349-16e450f75491",
+"Region VII – Central Visayas": "https://www.appsheet.com/start/e80806b0-c9a0-4a24-882d-8d9c2ff3ff6a",
+"Region VIII – Eastern Visayas": "https://www.appsheet.com/start/4a8adff6-3832-4433-8fae-44a7398fb255",
+"Region IX – Zamboanga Peninsula": "https://www.appsheet.com/start/90925999-62db-43ba-9ceb-90fe64d14381",
+"Region X – Northern Mindanao": "https://www.appsheet.com/start/3c6e7c8b-2180-4fb5-bd12-79c975f57442",
+"Region XI – Davao Region": "https://www.appsheet.com/start/47e511d4-cae9-4115-8f91-7b73be23c18d",
+"Region XII – SOCCSKSARGEN": "https://www.appsheet.com/start/310108a3-b1c7-48df-a6a0-ac707b24f6e5",
+"Region XIII – Caraga": "https://www.appsheet.com/start/fd370336-68db-4664-86e7-6f47558437df",
+"BARMM – Bangsamoro Autonomous Region in Muslim Mindanao": "https://www.appsheet.com/start/039f1fce-c2e8-4508-aa08-a87e897b0662"
+};
+
+const ouData = {
+"AFLO":"https://www.appsheet.com/start/508f92ac-59c2-447b-a16f-f8f53e7b64c4",
+"AMAS":"https://www.appsheet.com/start/cb2084f9-0884-498e-b112-f95a890ca331",
+"FPA":"https://www.appsheet.com/start/54ecf87b-e858-46d3-849d-e0407955528a",
+"BFAR":"https://www.appsheet.com/start/9ec73e23-7640-4301-bba4-b30cacdd3b5f",
+"BAI":"https://www.appsheet.com/start/5c59efb5-7571-4c48-9c18-037c7d8f1e31",
+"PFDA":"https://www.appsheet.com/start/25f30bc7-cdc1-4001-86b1-828e3657275f",
+"Sagip Saka":"https://www.appsheet.com/start/854b34be-767d-4edb-b8ec-a6ef815464a1"
+};
+
+const select = document.getElementById("systemSelect");
+const rfoBtn = document.getElementById("rfoBtn");
+const ouBtn = document.getElementById("ouBtn");
+const pill = document.getElementById("pill");
+
+function loadDropdown(data){
+  select.innerHTML = '<option value="">Select option</option>';
+  for (let key in data){
+    let opt = document.createElement("option");
+    opt.textContent = key;
+    opt.value = data[key];
+    select.appendChild(opt);
+  }
+}
+
+loadDropdown(rfoData);
+
+rfoBtn.onclick = () =>{
+  pill.classList.remove("right");
+  rfoBtn.classList.add("active");
+  ouBtn.classList.remove("active");
+  loadDropdown(rfoData);
+}
+
+ouBtn.onclick = () =>{
+  pill.classList.add("right");
+  ouBtn.classList.add("active");
+  rfoBtn.classList.remove("active");
+  loadDropdown(ouData);
+}
+
+select.onchange = () =>{
+  if(select.value){
+    window.open(select.value, "_blank");
+  }
+}
+</script>
+
+</body>
+</html>

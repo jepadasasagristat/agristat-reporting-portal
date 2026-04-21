@@ -1,0 +1,107 @@
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family:Inter,Segoe UI;
+  color:white;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+}
+
+.page-bg{
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  background:
+    linear-gradient(rgba(6,95,70,.75),rgba(30,58,138,.75)),
+    url("https://i.imgur.com/uwWrdeE.jpg") center/cover no-repeat;
+  filter:contrast(1.15) saturate(1.1);
+  transform:scale(1.05);
+}
+
+.main{
+  flex:1;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+}
+
+.glass-card{
+  width:650px;
+  padding:45px;
+  border-radius:18px;
+  background:rgba(255,255,255,0.1);
+  backdrop-filter:blur(18px);
+  box-shadow:0 30px 70px rgba(0,0,0,.45);
+}
+
+.brand{display:flex;align-items:center;gap:18px}
+.brand img{height:72px}
+.brand h1{font-size:2rem;font-weight:800}
+.subtitle{opacity:.85;font-size:.95rem}
+
+.divider{
+  height:1px;
+  background:rgba(255,255,255,.25);
+  margin:22px 0 28px;
+}
+
+h2{text-align:center;margin-bottom:20px}
+
+/* PERFECT TOGGLE FIX */
+.toggle-wrapper{
+  position:relative;
+  display:flex;
+  background:#0f172a;
+  border-radius:10px;
+  padding:6px;
+  margin-bottom:25px;
+}
+
+.toggle{
+  flex:1;
+  padding:13px;
+  border:none;
+  background:none;
+  color:#cbd5e1;
+  font-size:15px;
+  font-weight:600;
+  cursor:pointer;
+  z-index:2;
+}
+
+.toggle.active{color:white}
+
+.toggle-pill{
+  position:absolute;
+  top:6px;
+  left:6px;
+  width:calc(50% - 6px);
+  height:calc(100% - 12px);
+  background:#16a34a;
+  border-radius:7px;
+  transition:transform .35s cubic-bezier(.77,0,.18,1);
+}
+
+/* move pill perfectly to right */
+.toggle-pill.right{
+  transform:translateX(100%);
+}
+
+.dropdown{
+  width:100%;
+  padding:16px;
+  border-radius:10px;
+  border:none;
+  font-size:16px;
+  margin-bottom:12px;
+}
+
+.note{text-align:center;opacity:.7;font-size:13px}
+footer{text-align:center;padding:20px;opacity:.8}
+
+@media(max-width:700px){
+  .glass-card{width:100%;padding:35px}
+  .brand{flex-direction:column;text-align:center}
+}
